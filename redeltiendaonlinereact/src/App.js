@@ -6,6 +6,9 @@ import ItemListContainer from './Componentes/ItemListContainer/ItemListContainer
 
 
 function App() {
+
+  const saludo= "Bienvenido a nuestra pagina, gracias por visitarnos";
+
   return (
     // <div className="App">
     //   {/* <header className="App-header"> */}
@@ -25,7 +28,7 @@ function App() {
     // </div>
   <> 
     <Navbar />
-    <ItemListContainer />
+    <ItemListContainer mensaje ={saludo}/>
   </>
   );
 }

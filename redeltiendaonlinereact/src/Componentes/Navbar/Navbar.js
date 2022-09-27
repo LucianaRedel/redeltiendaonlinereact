@@ -23,7 +23,7 @@ const Navbar = () => {
                     })
                 }              
             </nav>
-            <h3> Tienda online </h3>
+            <h2> Tienda online </h2>
        
             <CartWidget />
            

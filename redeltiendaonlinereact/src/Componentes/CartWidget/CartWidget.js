@@ -21,6 +21,7 @@ const styles ={
         display: 'flex',
         alignItems: 'center',
         color: 'blue',
+        justifyContent: 'space-between',
     },
     boton:{
         color: 'black',
