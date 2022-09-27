@@ -1,7 +1,8 @@
 //import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import Header from './Componentes/Header/Header'
+import Navbar from './Componentes/Navbar/Navbar'
+import ItemListContainer from './Componentes/ItemListContainer/ItemListContainer'
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
     //   {/* </header> */}
     // </div>
   <> 
-    <Header />
+    <Navbar />
+    <ItemListContainer />
   </>
   );
 }

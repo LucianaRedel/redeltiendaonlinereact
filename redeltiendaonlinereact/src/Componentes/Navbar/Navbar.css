@@ -3,13 +3,16 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Indie Flower', cursive;
 }
 
 a{
     padding: 20px;
+    font-size: x-large;
 }
 
 img{
     height: 120px;
     width: 120px;
+    padding: 20px;
 }
