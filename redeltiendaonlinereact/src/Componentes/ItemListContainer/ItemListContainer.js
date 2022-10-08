@@ -1,41 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './ItemListContainer.css';
-import imagen1 from './Imagenes/QuesoAzul y SauvignonBlanc.jpeg';
+import ItemList from "../Item/ItemList";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
-const ItemListContainer = (props) => {
+export const ItemListContainer = (props) => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const productos = [
+        {id:1, title:"Queso Azul", descripcion:"De cuerpo blanco y cremoso, semi blando, caracterizado por presentar venas verdes, grises o azules, de sabor intenso", stock: 20, price: 400, imagen:"./queso-azul.jpeg"},
+        {id:2, title:"Queso Brie", descripcion:"Inconfundible con su corteza comestible blanquecida, de textura suave y sabor cremoso", stock: 10, price: 350, imagen:"../../Productos/Quesos/queso-brie.jpeg"},
+        {id:3, title:"Bianchi Particular Cabernet Sauvignon", descripcion:"Cosecha 2014, vino que tiene toda la complejidad y fuerza para los paladraes mas exigentes, con aroma a frutos negros maduros y un delicado perfume a violetas", stock:5, price:700, imagen:"../../Productos/Vinos/bianchi-particular-cabernet.png"},
+        {id:4, title:"Luigi Bosca Sauvignon Blanc", descripcion:"Vino de color amarillo verdoso con reflejos plateados, aromas a frutas tropicales, hierbas y minerales, de sabor refrescante y ácido", stock:2, price:1000, imagen:"../Productos/Vinos/luigibosca-sauvignonblanc.jpeg"},
+    ]
+
+    const cargarProductos = new Promise((resolve, reject) =>{   
+        setTimeout(()=>{
+            resolve(productos)
+            reject('Ocurrio un error')
+            setIsLoading(false)
+        }, 1000);      
+    })
+  
+
+    useEffect(() => {
+    // fetch("https://fakestoreapi.com/products")
+    cargarProductos
+        .then((data) => {
+            console.log(data)
+            setProducts(data)
+        })
+        // .then((json) => setProducts(json))
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(setLoading(false));
+    }, []);
+  
     return (
-        <main>
-            <div>
-                <h1> {props.mensaje} </h1>
-            </div>
-            <div className="contenido">
-                <p>
-                    Te dejamos algunos consejos y recomendaciones para ayudarte a elegir la mejor combinación de vinos y quesos. 
-                </p>
-                <p>
-                    La regla principal es que deben complementarse, y no competir entre si!
-                </p>
-                <p>
-                    Primero que nada, hay que tener en cuenta que no todo vino se combina con cualquier queso, 
-                </p>
-                <p>
-                    Tampoco todos los quesos quedan bien con cualquier vino,
-                </p>
-                <p>
-                    Hay que considerar que los sabores deberían complementarse y equilibrarse
-                </p>
-                <h3> Queso Azul </h3>
-                <p>
-                    Este tipo de quesos se combinan muy bien con vinos blancos o tintos, robustos y de sabor fuerte 
-                </p>
-                <p> <span className="negrita"> Te recomendamos un Saugvinon Blanc para combinar con el queso azul </span></p>
-                <p>
-                <img className="imagenes" src={imagen1} alt="Queso Azul y Sauvignon Blanc"/>
-                </p>
-            </div>
-        </main>
-    )
-}
+      <>
+        <h1>{props.gretting}</h1>
+        <input type="text" id="buscador" placeholder="Busque su producto"/> 
+        {
+          <>
+            {loading ? <LoadingSpinner/>  : <ItemList products={products} />}
+            {isLoading ? <LoadingSpinner/> : console.log("cargando")}
+          </>
+        }
+      </>
+    );
+  };
 
-export default ItemListContainer
+  

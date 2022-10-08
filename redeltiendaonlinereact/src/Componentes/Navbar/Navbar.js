@@ -7,7 +7,7 @@ import CartWidget from "../CartWidget/CartWidget";
 const Navbar = () => {
 
     const categoriasNavbar = [
-        {nombre: "Productos", id:0, link: "#"},
+        {nombre: "Recomendaciones", id:0, link: "#"},
         {nombre: "Login", id:1, link: "#"},
         {nombre: "Contacto", id:2, link:"#" },
     ];

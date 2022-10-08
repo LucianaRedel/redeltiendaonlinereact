@@ -1,0 +1,13 @@
+
+.botones{
+    display: flex;
+}
+
+h4{
+    padding: 5px;
+    color: blue;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
