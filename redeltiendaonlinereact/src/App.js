@@ -4,7 +4,10 @@ import './App.css';
 import Navbar from './Componentes/Navbar/Navbar'
 import { ItemListContainer } from './Componentes/ItemListContainer/ItemListContainer'
 import ItemCounter from './Componentes/ItemCounter/ItemCounter';
+import { Cart } from './Componentes/Cart/Cart';
+import { ItemDetailContainer } from './Componentes/ItemDetailContainer/ItemDetailContainer';
 import swal from "sweetalert";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
@@ -18,28 +21,25 @@ function App() {
 }
 
   return (
-    // <div className="App">
-    //   {/* <header className="App-header"> */}
-    //     {/* <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Hola Mundo!
-    //     </a> */}
-    //   {/* </header> */}
-    // </div>
+
   <> 
+  <BrowserRouter>
     <Navbar />
-    <ItemListContainer gretting ={saludo}/>
-    <ItemCounter stock={8} inicial={1} onAdd={onAdd}/>
+    <Routes>
+      <Route path="/" element={<ItemListContainer gretting ={saludo}/>}/>
+      <Route path="/categoria/:id" element={<ItemListContainer gretting ={saludo}/>}/>
+      <Route path="/producto/:id" element={<ItemDetailContainer/>}/>
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="*" element={<ItemListContainer gretting ={saludo}/>}/>
+    </Routes>
+    <ItemCounter stock={8} inicial={1} onAdd={onAdd}/> 
+  </BrowserRouter>
   </>
   );
 }
 
 export default App;
+
+{/* <ItemListContainer gretting ={saludo}/> */}
+    // <ItemDetailContainer/>
+    // <ItemCounter stock={8} inicial={1} onAdd={onAdd}/> 

@@ -1,6 +1,5 @@
-import React from 'react';
-import { Item } from './Item';
-
+import React from 'react'
+import Item from './Item';
 
 const ItemList = ({ products }) => {
     return (
@@ -22,4 +21,4 @@ const styles = {
     }
   }
 
-export default ItemList
+export default ItemList;

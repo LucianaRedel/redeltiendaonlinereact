@@ -17,7 +17,7 @@ input{
     font-weight: bolder;
     font-size: x-large;
     display: grid;
-    align-items: center;
+    justify-content: center;
 }
 
 .contenido{
