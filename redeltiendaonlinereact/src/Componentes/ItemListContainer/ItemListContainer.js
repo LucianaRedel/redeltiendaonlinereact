@@ -12,9 +12,9 @@ export const ItemListContainer = (props) => {
     const { id } = useParams();
     console.log(id);
 
-    const URL_BASE = 'https://fakestoreapi.com/products'
-    const URL_CAT = `${URL_BASE}/category/${id}`
-  
+  const URL_BASE = 'https://fakestoreapi.com/products'
+  const URL_CAT = `${URL_BASE}/category/${id}`
+
     useEffect(() => {
       const getProducts = async () => {
         try {

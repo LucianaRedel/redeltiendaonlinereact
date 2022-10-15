@@ -1,14 +1,8 @@
 import React from "react";
 import ItemCounter from "../ItemCounter/ItemCounter";
 import Card from "@mui/material/Card";
-import {
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-  CardActionArea,
-  CardActions,
-} from "@mui/material";
+import { Link } from "react-router-dom";
+import { CardContent, CardMedia, Typography, Button, CardActionArea, CardActions } from "@mui/material";
 
 const Item = ({ product }) => {
   return (
@@ -36,9 +30,11 @@ const Item = ({ product }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+       <Link to={'/producto/' + product.id}> 
+          <Button  style={styles.title} size="small" color="primary">
           Ver Detalles
-        </Button>
+          </Button>
+        </Link>
         <ItemCounter/>
       </CardActions>
     </Card>

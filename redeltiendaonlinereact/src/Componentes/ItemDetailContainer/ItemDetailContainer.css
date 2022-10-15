@@ -1,0 +1,9 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Indie Flower', cursive;
+    padding: 20px;
+    font-size: x-large;
+}

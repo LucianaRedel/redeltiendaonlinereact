@@ -40,6 +40,4 @@ function App() {
 
 export default App;
 
-{/* <ItemListContainer gretting ={saludo}/> */}
-    // <ItemDetailContainer/>
-    // <ItemCounter stock={8} inicial={1} onAdd={onAdd}/> 
+
