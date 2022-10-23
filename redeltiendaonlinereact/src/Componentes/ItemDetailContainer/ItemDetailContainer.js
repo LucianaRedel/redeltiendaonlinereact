@@ -24,7 +24,7 @@ export const ItemDetailContainer = ({ greeting }) => {
       }
     };
     getProducts();
-  }, []);
+  }, [id]);
 
   return (
     <>

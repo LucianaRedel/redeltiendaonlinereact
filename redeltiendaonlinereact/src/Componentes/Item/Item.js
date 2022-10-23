@@ -31,11 +31,11 @@ const Item = ({ product }) => {
       </CardActionArea>
       <CardActions>
        <Link to={'/producto/' + product.id}> 
-          <Button  style={styles.title} size="small" color="primary">
+          <Button  style={styles.title} size="large" color="primary">
           Ver Detalles
           </Button>
         </Link>
-        <ItemCounter/>
+        {/* <ItemCounter/> */}
       </CardActions>
     </Card>
   );

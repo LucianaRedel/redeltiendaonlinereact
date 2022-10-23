@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import RemoveIcon from '@mui/icons-material/Remove';
 import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
+import { ListadoUsuarios } from "../Usuarios/ListadoUsuarios";
 
 const ItemCounter = ({stock, inicial, onAdd}) => {
 
@@ -23,17 +24,23 @@ const ItemCounter = ({stock, inicial, onAdd}) => {
     };
 
     const botonAgregar = () => {
-        onAdd(cantidad)    
+    onAdd(cantidad)   
+    if (cantidad < 1){
+    setCantidad(cantidad + 1);
     }
+    };
 
 
     return(
             <div className="botones">
-              <button onClick={botonSumar}> <AddIcon /> <AddShoppingCartRoundedIcon/> </button>
+              <button onClick={botonSumar} style={styles.boton}> <AddIcon /> <AddShoppingCartRoundedIcon/> </button>
               <h4> Total {cantidad} </h4>
               <button onClick={botonRestar}> <RemoveIcon /> <RemoveShoppingCartRoundedIcon /> </button>
-              <button onClick={botonAgregar} style={styles.boton}> 
+              {/* <button onClick={botonAgregar} >  */}
+              <button onClick={()=> onAdd(cantidad)} > 
               <span> { stock === 0 ? `No tenemos stock` : `Agregar al carrito`} </span> 
+              {/* <span> { agregar ? <ListadoUsuarios/> : `Agregar al carrito`} </span>  */}
+              {/* <span> Agregar al carrito </span> */}
               </button>
             </div>
 
