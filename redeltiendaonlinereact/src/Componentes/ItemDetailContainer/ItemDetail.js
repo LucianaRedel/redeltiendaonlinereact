@@ -38,7 +38,7 @@ const ItemDetail = ({ product }) => {
       <h2>{product.price}</h2>
       {/* {mostrarItemCount ? (<ItemCounter stock={8} inicial={1} onAdd={onAdd}/>) :  */}
       {!presionarBoton ? (
-        <ItemCounter stock={10} inicial={1} onAdd={onAdd}/>
+        <ItemCounter stock={product.stock} inicial={1} onAdd={onAdd}/>
       ) : 
       (<Link to={'/cart'}>
         <button> Finalizar compra </button>

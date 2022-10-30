@@ -10,7 +10,7 @@ export const ListadoUsuarios = ({listado, funcionEliminar}) =>{
     return(
         <>
         <h1> 
-        Listado de Usuarios
+        Datos del comprador
         </h1>
         <ul>
             {listado.map((nombre, i)=>{

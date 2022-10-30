@@ -25,7 +25,7 @@ const Item = ({ product }) => {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Precio ${product.price}
-            Stock {product.stock}
+            {/* Stock {product.stock} */}
           </Typography>
         </CardContent>
       </CardActionArea>
