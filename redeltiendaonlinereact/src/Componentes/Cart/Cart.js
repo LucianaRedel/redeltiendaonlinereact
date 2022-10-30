@@ -39,9 +39,9 @@ export const Cart = ({ product }) => {
         .catch ((error) =>{
             console.log("error");
         });
-        actualizarStock();
         borrar();
         setLoading(true);
+        actualizarStock();
     }
 
   const actualizarStock = ()=>{ 
@@ -84,12 +84,12 @@ export const Cart = ({ product }) => {
             <h1> ${total} </h1>
         </div>
         <button style={styles.boton} onClick={borrar}> Vaciar el carrito de compras </button>
-        <Comprador/> 
+        <Comprador/>  
         <h1> 3er paso, finalizar la compra </h1>
         <div> 
         {
           loading ? <LoadingSpinner/>  :
-        <button style={styles.boton} onClick={finalizarCompra} > Finalizar Compra </button>
+        <button disabled={cart.length === 0 } style={styles.boton} onClick={finalizarCompra} > Finalizar Compra </button>
         }
         </div>
       </>

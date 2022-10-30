@@ -1,20 +1,31 @@
 import React from "react";
 import { useState } from "react";
 import { ListadoUsuarios } from "./ListadoUsuarios";
+import { dataBase } from "../../Firebase/Firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import swal from "sweetalert";
 
 export const Comprador = () => {
 
-    const [ comprador, setComprador] = useState({
-        email: '',
-        nombre: '',
-        apellido: '',
-    });
+    // const [ comprador, setComprador] = useState({
+    //     email: '',
+    //     nombre: '',
+    //     apellido: '',
+    // });
+
+    const [ comprador, setComprador ] = useState({});
 
     const [ listado, setListado] = useState([])
 
-    const handlerChange = (e) =>{
-        setComprador(e.target.value)
-    }
+    // const handleChange = (e) =>{
+    //     setComprador(e.target.value)
+    // }
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setComprador(values => ({...values, [name]: value}))
+      }
 
     const { nombre, apellido, email } = setComprador;
 
@@ -22,12 +33,19 @@ export const Comprador = () => {
     setListado([...listado, comprador]);
     console.log(listado);
     console.log(comprador)
+
+    const compradorCollection = collection(dataBase, "compradores");
+        addDoc(compradorCollection, {
+            comprador,
+            fecha: serverTimestamp()
+        })
+    swal("Comprador agregado!", `El email registrado es ${comprador.email}`, "success");
+
     }
 
-    const funcionEliminar = (nombre)=>{
-    setListado(listado.filter((usuario)=> usuario !== nombre))
-    }
-
+    // const funcionEliminar = (nombre)=>{
+    // setListado(listado.filter((usuario)=> usuario !== nombre))
+    // }
 
     return (
         <>
@@ -36,13 +54,13 @@ export const Comprador = () => {
         
         <form>
             <label> Nombre
-        <input type="text" name="nombre" value={nombre} onChange={handlerChange}/>
+        <input type="text" name="nombre" value={nombre} onChange={handleChange}/>
             </label>
             <label> Apellido
-        <input type="text" name="apellido" value={apellido} onChange={handlerChange}/>
+        <input type="text" name="apellido" value={apellido} onChange={handleChange}/>
             </label>
             <label> E-mail
-        <input type="text" name="email" value={email} onChange={handlerChange}/>
+        <input type="text" name="email" value={email} onChange={handleChange}/>
             </label>
         </form>
         

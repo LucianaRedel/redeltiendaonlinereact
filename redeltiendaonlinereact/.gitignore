@@ -23,3 +23,7 @@ info.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+Assets/Componentes/Usuarios/Usuarios.js
+Assets/Componentes/Usuarios/ListadoUsuarios.js
+
