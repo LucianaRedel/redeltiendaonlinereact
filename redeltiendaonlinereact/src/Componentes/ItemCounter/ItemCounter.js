@@ -37,7 +37,7 @@ const ItemCounter = ({stock, inicial, onAdd}) => {
               <h4> Total {cantidad} </h4>
               <button onClick={botonRestar}> <RemoveIcon /> <RemoveShoppingCartRoundedIcon /> </button>
               {/* <button onClick={botonAgregar} >  */}
-              <button onClick={()=> onAdd(cantidad)} > 
+              <button disabled={stock === 0} onClick={()=> onAdd(cantidad)} > 
               <span> { stock === 0 ? `No tenemos stock` : `Agregar al carrito`} </span> 
               {/* <span> { agregar ? <ListadoUsuarios/> : `Agregar al carrito`} </span>  */}
               {/* <span> Agregar al carrito </span> */}

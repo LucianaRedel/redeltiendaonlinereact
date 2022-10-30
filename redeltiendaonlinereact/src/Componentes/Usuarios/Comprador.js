@@ -2,11 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { ListadoUsuarios } from "./ListadoUsuarios";
 
-
 export const Comprador = () => {
 
-
-    const [ formulario, setFormulario] = useState({
+    const [ comprador, setComprador] = useState({
         email: '',
         nombre: '',
         apellido: '',
@@ -15,15 +13,15 @@ export const Comprador = () => {
     const [ listado, setListado] = useState([])
 
     const handlerChange = (e) =>{
-        setFormulario(e.target.value)
+        setComprador(e.target.value)
     }
 
-    const { nombre, apellido, email } = setFormulario;
+    const { nombre, apellido, email } = setComprador;
 
     const handlerClick = ()=>{
-    setListado([...listado, formulario]);
+    setListado([...listado, comprador]);
     console.log(listado);
-    console.log(formulario)
+    console.log(comprador)
     }
 
     const funcionEliminar = (nombre)=>{
@@ -34,7 +32,7 @@ export const Comprador = () => {
     return (
         <>
         <div style={styles.boton}>
-        <span> Ingrese sus datos </span>
+        <h1> 2do paso, ingrese los datos del comprador para finalizar la compra </h1>
         
         <form>
             <label> Nombre
@@ -49,7 +47,7 @@ export const Comprador = () => {
         </form>
         
         </div>
-        <div>
+        <div style={styles.boton}>
         <button style={styles.boton} onClick={handlerClick}> Agregar comprador </button> 
         {/* <ListadoUsuarios listado={listado} funcionEliminar={funcionEliminar}/>  */}
         </div>
@@ -58,12 +56,13 @@ export const Comprador = () => {
     
 }
 
-
 const styles ={
     boton:{
         padding: 30,
         margin: 30,
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         color: 'black',
         backgroundColor: 'white',
         fontFamily: 'Indie Flower',

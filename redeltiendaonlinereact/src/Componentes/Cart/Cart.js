@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import './Cart.css';
 import { Context } from '../../Context/CustomContext';
 import { Link } from "react-router-dom";
@@ -7,9 +7,13 @@ import { dataBase } from "../../Firebase/Firebase";
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import swal from "sweetalert";
 import { Comprador } from '../Usuarios/Comprador';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
 export const Cart = ({ product }) => {
+
+    const [loading, setLoading] = useState (false);
+
     const { cart, agregarItem, total, borrar } = useContext(Context);
 
     const comprador = {
@@ -37,6 +41,7 @@ export const Cart = ({ product }) => {
         });
         actualizarStock();
         borrar();
+        setLoading(true);
     }
 
   const actualizarStock = ()=>{ 
@@ -55,12 +60,12 @@ export const Cart = ({ product }) => {
         {cart.length === 0 ? (
           <div style={styles.titulo}>
             <h1 >
-              No agregaste productos aun, puedes <Link to="/"> Continuar comprando aqui </Link>
+              No agregaste productos aún, <Link to="/"> Puedes continuar comprando aquí </Link>
             </h1>
           </div>
         ) : (
           <div className="detalleItem">
-              <h1 style={styles.titulo}> Detalle del carrito de compras </h1>
+              <h1 style={styles.titulo}> 1er paso, revisar el detalle del carrito de compras </h1>
             {cart.map((producto) => (
              <h2 key={producto.id}> 
               <img alt={producto.title} src={producto.image} /> 
@@ -79,8 +84,14 @@ export const Cart = ({ product }) => {
             <h1> ${total} </h1>
         </div>
         <button style={styles.boton} onClick={borrar}> Vaciar el carrito de compras </button>
-        <Comprador/>
+        <Comprador/> 
+        <h1> 3er paso, finalizar la compra </h1>
+        <div> 
+        {
+          loading ? <LoadingSpinner/>  :
         <button style={styles.boton} onClick={finalizarCompra} > Finalizar Compra </button>
+        }
+        </div>
       </>
     );
   };
@@ -97,6 +108,7 @@ export const Cart = ({ product }) => {
         alignItems: 'center',
         display: 'flex',
         fontFamily: 'Indie Flower',
+        fontSize: 'xx-large', 
     }
 }
     
