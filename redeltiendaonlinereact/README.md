@@ -2,6 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Aplicaciones y librerias utilizadas en el proyecto
+HTML
+JavaScript
+Material UI
+SweetAlert2
+Firebase
+
+# Obetivo de la pagina
+La pagina se puede navegar por categorias ubicadas en el Navbar, cada item se abre en una descripcion detallada y desde esa vista se agregan al carrito de compras 
+
+El usuario debe completar sus datos antes de finalizar la compra 
+
+Las ventas y los datos del comprador se almacenan en Firebase 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,3 +82,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
