@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
+
 export const Context = createContext();
 
 export const CustomProvider = ({children}) =>{
@@ -11,23 +12,25 @@ export const CustomProvider = ({children}) =>{
     useEffect(()=>{
         setCantidadItem(cart.reduce((total, item) => total + item.cantidad, 0))
         setTotal(cart.reduce((total, item) => total + (item.cantidad * item.price), 0))
-    }, [])
+    }, [cart])
 
-    const agregarItem = (item, cantidad) =>{
-        if(itemsEnCarrito(item.id)){
-            const modificado = cart.map((producto) =>{
-                if (producto.id === item.id){
-                    producto.cantidad += cantidad;
-                }
-                return producto;
-            });
-            setCart(modificado);
-        } else{
-            setCart([...cart,{...item, cantidad}]);
+
+    const agregarItem = (item, cantidad) => {
+        if (itemsEnCarrito(item.id)) {
+            const actualizarCart = cart.map((product) =>
+                product.id === item.id ? (
+                    {...product, cantidad: cantidad}
+                ) : (
+                    product
+                )
+            )
+            setCart(actualizarCart);
+        } else {
+            setCart([...cart, {...item, cantidad: cantidad}])
+            setCantidadItem(cantidadItem + cantidad)
+            setTotal(cart.reduce((total, item) => total + (item.cantidad * item.price), 0))
         }
-        setCantidadItem(cantidadItem + cantidad);
-        setTotal(total + (item.price * cantidad));
-    };
+    }
 
     const borrarItem = (id) => {
         const encontrado = cart.find(producto => producto.id === id);
@@ -55,3 +58,6 @@ return(
     </div>
 )
 }
+
+
+

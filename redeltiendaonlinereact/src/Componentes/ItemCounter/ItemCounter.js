@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import RemoveIcon from '@mui/icons-material/Remove';
 import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
-import { ListadoUsuarios } from "../Usuarios/ListadoUsuarios";
+
 
 const ItemCounter = ({stock, inicial, onAdd}) => {
 

@@ -34,7 +34,6 @@ export const ItemListContainer = (props) => {
     .catch ((error) =>{
     console.log("error");
     })
-    // .finally(setLoading(false));
     .finally (()=>{
       setLoading(false);
     })

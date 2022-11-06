@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import './Cart.css';
 import { Context } from '../../Context/CustomContext';
 import { Link } from "react-router-dom";
-import ItemCounter from "../ItemCounter/ItemCounter";
 import { dataBase } from "../../Firebase/Firebase";
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import swal from "sweetalert";
-import { Comprador } from '../Usuarios/Comprador';
+import Comprador from '../Usuarios/Comprador';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import AddIcon from '@mui/icons-material/Add';
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 
 
 export const Cart = ({ product }) => {
@@ -16,17 +17,14 @@ export const Cart = ({ product }) => {
 
     const { cart, agregarItem, total, borrar } = useContext(Context);
 
-    const comprador = {
-    nombre: 'moni',
-    apellido: 'argento',
-    email: 'pa@gmail.com',
-    }
-    // Tomar estos datos de un formulario de usuarios
+    // const [comprador, setComprador] = useState({});
 
+    const [usuario, setUsuario] = useState({});
+    
     const finalizarCompra = ()=>{
         const ventasCollection = collection(dataBase, "ventas");
         addDoc(ventasCollection, {
-            comprador,  
+            usuario,  
             items: cart,
             total: total,
             fecha: serverTimestamp()
@@ -51,9 +49,6 @@ export const Cart = ({ product }) => {
     })
   };
 
-    const onAdd =(cantidad) =>{
-        agregarItem(product, cantidad);  
-      }
 
     return (
       <>
@@ -73,10 +68,9 @@ export const Cart = ({ product }) => {
               Cantidad {producto.cantidad} /
               Precio $ {producto.price} / 
               Total $ {producto.price * producto.cantidad}
-              {/* <ItemCounter onAdd={onAdd} /> */}
             </h2>
             ) 
-            )}         
+            )}    
           </div>
         )}
         <div style={styles.titulo}>
@@ -84,13 +78,10 @@ export const Cart = ({ product }) => {
             <h1> ${total} </h1>
         </div>
         <button style={styles.boton} onClick={borrar}> Vaciar el carrito de compras </button>
-        <Comprador/>  
+        <Comprador setUsuario={setUsuario}/>  
         <h1> 3er paso, finalizar la compra </h1>
         <div> 
-        {
-          loading ? <LoadingSpinner/>  :
         <button disabled={cart.length === 0 } style={styles.boton} onClick={finalizarCompra} > Finalizar Compra </button>
-        }
         </div>
       </>
     );
@@ -109,6 +100,8 @@ export const Cart = ({ product }) => {
         display: 'flex',
         fontFamily: 'Indie Flower',
         fontSize: 'xx-large', 
-    }
+    },
+  
 }
+
     

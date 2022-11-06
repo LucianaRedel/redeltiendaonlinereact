@@ -1,25 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { ListadoUsuarios } from "./ListadoUsuarios";
 import { dataBase } from "../../Firebase/Firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import swal from "sweetalert";
 
-export const Comprador = () => {
 
-    // const [ comprador, setComprador] = useState({
-    //     email: '',
-    //     nombre: '',
-    //     apellido: '',
-    // });
+function Comprador({setUsuario}) {
 
     const [ comprador, setComprador ] = useState({});
 
     const [ listado, setListado] = useState([])
-
-    // const handleChange = (e) =>{
-    //     setComprador(e.target.value)
-    // }
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -34,18 +24,16 @@ export const Comprador = () => {
     console.log(listado);
     console.log(comprador)
 
+    setUsuario({comprador});
+
     const compradorCollection = collection(dataBase, "compradores");
         addDoc(compradorCollection, {
             comprador,
             fecha: serverTimestamp()
         })
-    swal("Comprador agregado!", `El email registrado es ${comprador.email}`, "success");
-
+        swal("Comprador agregado!", `El email registrado es ${comprador.email}`, "success")
     }
 
-    // const funcionEliminar = (nombre)=>{
-    // setListado(listado.filter((usuario)=> usuario !== nombre))
-    // }
 
     return (
         <>
@@ -54,20 +42,19 @@ export const Comprador = () => {
         
         <form>
             <label> Nombre
-        <input type="text" name="nombre" value={nombre} onChange={handleChange}/>
+        <input type="text" name="nombre" value={nombre} required onChange={handleChange}/>
             </label>
             <label> Apellido
-        <input type="text" name="apellido" value={apellido} onChange={handleChange}/>
+        <input type="text" name="apellido" value={apellido} required onChange={handleChange}/>
             </label>
             <label> E-mail
-        <input type="text" name="email" value={email} onChange={handleChange}/>
+        <input type="email" name="email" value={email} required onChange={handleChange}/>
             </label>
         </form>
         
         </div>
         <div style={styles.boton}>
         <button style={styles.boton} onClick={handlerClick}> Agregar comprador </button> 
-        {/* <ListadoUsuarios listado={listado} funcionEliminar={funcionEliminar}/>  */}
         </div>
         </>
     )
@@ -87,3 +74,6 @@ const styles ={
         fontSize: 'x-large', 
     }
 }
+
+export default Comprador;
+
