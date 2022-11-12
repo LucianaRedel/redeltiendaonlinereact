@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 
 
+
 export const Context = createContext();
 
 export const CustomProvider = ({children}) =>{
@@ -39,10 +40,12 @@ export const CustomProvider = ({children}) =>{
         setTotal(total - (encontrado.price * encontrado.cantidad))
     }
 
+    const itemsEnCarrito = (id) =>{cart.find(item => item.id === id)}
 
-    const itemsEnCarrito =(id) =>{
-        cart.some(item => item.id === id)
-    }
+    // const itemsEnCarrito =(id) =>{
+    //      cart.some(item => item.id === id)
+    // }    
+
 
     const borrar =() => {
         setCart([]);
