@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/redeltiendaonlinereact/static/css/main.af0009f7.css",
+    "main.js": "/redeltiendaonlinereact/static/js/main.11bd89c2.js",
+    "static/js/787.cc6764d4.chunk.js": "/redeltiendaonlinereact/static/js/787.cc6764d4.chunk.js",
+    "static/media/logo.jpeg": "/redeltiendaonlinereact/static/media/logo.cabd2327c0f6f598c907.jpeg",
+    "index.html": "/redeltiendaonlinereact/index.html",
+    "main.af0009f7.css.map": "/redeltiendaonlinereact/static/css/main.af0009f7.css.map",
+    "main.11bd89c2.js.map": "/redeltiendaonlinereact/static/js/main.11bd89c2.js.map",
+    "787.cc6764d4.chunk.js.map": "/redeltiendaonlinereact/static/js/787.cc6764d4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af0009f7.css",
+    "static/js/main.11bd89c2.js"
+  ]
+}
