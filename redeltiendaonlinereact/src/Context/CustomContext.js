@@ -20,7 +20,7 @@ export const CustomProvider = ({children}) =>{
         if (itemsEnCarrito(item.id)) {
             const actualizarCart = cart.map((product) =>
                 product.id === item.id ? (
-                    {...product, cantidad: cantidad}
+                    {...product, cantidadItem: product.cantidad + cantidad}
                 ) : (
                     product
                 )
